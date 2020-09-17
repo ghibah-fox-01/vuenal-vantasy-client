@@ -12,7 +12,7 @@ export default new Vuex.Store({
       score: 0,
       socketId: ''
     },
-    listQuestion: ['Architecture', 'Programming', 'Asyawaladu', 'Swaladubab', 'Cangcimen', 'Borokokok'],
+    words: ['Architecture', 'Programming', 'Asyawaladu', 'Swaladubab', 'Cangcimen', 'Borokokok'],
     question: ''
   },
   mutations: {
@@ -34,7 +34,7 @@ export default new Vuex.Store({
       state.myProfile.score = payload
     },
     SOCKET_GET_LIST_QUESTION (state, payload) {
-      state.listQuestion = payload
+      state.words = payload
     },
     SET_ANSWER (state) {
       state.answer = ''

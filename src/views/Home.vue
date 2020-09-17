@@ -1,15 +1,4 @@
 <template>
-<<<<<<< HEAD
-  <div class="container">
-    <div class="row">
-      <div class="col-6 mx-auto">
-        <img alt="Vue logo" src="../assets/logo.png">
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">@</span>
-          </div>
-          <input v-model="username" type="text" class="form-control" placeholder="Username">
-=======
   <div class="home">
     <NavBar/>
     <div class="container">
@@ -20,7 +9,6 @@
         <h1 id="random-generator" class="border border-secondary">"{{randomWord}}"</h1>
         <div class="form-group">
           <input type="text" class="form-control" id="input-word" placeholder="start typing...">
->>>>>>> 1f9cf4e10709791e9106443530d3280d7ee8d54c
         </div>
         <h3>Time left: 32s</h3>
         </form>
@@ -38,10 +26,6 @@
           <div class="progress">
             <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 85%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
-<<<<<<< HEAD
-          <input v-model="msg" type="text" class="form-control" placeholder="text here">
-=======
->>>>>>> 1f9cf4e10709791e9106443530d3280d7ee8d54c
         </div>
       </div>
   </div>
