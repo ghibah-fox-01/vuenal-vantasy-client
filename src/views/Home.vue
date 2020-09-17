@@ -1,35 +1,63 @@
 <template>
   <div class="home">
-    <NavBar/>
+    <NavBar />
     <div class="container">
       <div id="game-center" class="border border-secondary p-5">
-      <h1>Welcome to, Vuenal Racer</h1>
+        <h1>Welcome to, Vuenal Racer</h1>
         <form id="form-input">
-        <h3>Type the given word in, 3s</h3>
-        <h1 id="random-generator" class="border border-secondary">"{{randomWord}}"</h1>
-        <div class="form-group">
-          <input type="text" class="form-control" id="input-word" placeholder="start typing...">
-        </div>
-        <h3>Time left: 32s</h3>
+          <h3>Type the given word in, 3s</h3>
+          <h1 id="random-generator" class="border border-secondary">"{{randomWord}}"</h1>
+          <div class="form-group">
+            <input type="text" class="form-control" id="input-word" placeholder="start typing..." />
+          </div>
+          <h3>Time left: 32s</h3>
         </form>
         <h4>Progress Bars</h4>
         <div class="progress-bar">
           <div class="progress">
-            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <div
+              class="progress-bar progress-bar-striped bg-success"
+              role="progressbar"
+              style="width: 25%"
+              aria-valuenow="25"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
           </div>
           <div class="progress">
-            <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+            <div
+              class="progress-bar progress-bar-striped bg-info"
+              role="progressbar"
+              style="width: 50%"
+              aria-valuenow="50"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
           </div>
           <div class="progress">
-            <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 0%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+            <div
+              class="progress-bar progress-bar-striped bg-warning"
+              role="progressbar"
+              style="width: 0%"
+              aria-valuenow="75"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
           </div>
           <div class="progress">
-            <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 85%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+            <div
+              class="progress-bar progress-bar-striped bg-danger"
+              role="progressbar"
+              style="width: 85%"
+              aria-valuenow="100"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
           </div>
         </div>
       </div>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
