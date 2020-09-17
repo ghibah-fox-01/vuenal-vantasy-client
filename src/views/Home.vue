@@ -43,8 +43,29 @@ export default {
   },
   computed: {
     randomWord () {
-      return this.$store.state.words[1]
+      return this.$store.state.words[1] 
     }
+  },
+  data () {
+    return {
+      msg: '',
+      username: ''
+    }
+  },
+  sockets: {
+    someoneConnect (data) {
+      console.log(data, '<<<<<<')
+    },
+    hai (data) {
+      console.log(data, '<<<<< socket dari server')
+    }
+  },
+  methods: {
+    sendMessage () {
+      this.$socket.emit('clientMessage', {
+        msg: this.msg,
+        username: this.username
+      })
   }
 }
 </script>
