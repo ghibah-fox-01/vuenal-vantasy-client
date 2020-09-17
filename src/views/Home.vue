@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <NavBar/>
+    <NavBar />
     <div class="container">
       <div id="game-center" class="border border-secondary p-5">
       <h1>Welcome to, Vuenal Racer</h1>
@@ -15,21 +15,43 @@
         <h4>Progress Bars</h4>
         <div class="progress-bar">
           <div class="progress">
+
             <div class="progress-bar progress-bar-striped bg-success" role="progressbar" :style="`width:${score}%`" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
           <div class="progress">
-            <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+            <div
+              class="progress-bar progress-bar-striped bg-info"
+              role="progressbar"
+              style="width: 50%"
+              aria-valuenow="50"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
           </div>
           <div class="progress">
-            <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 0%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+            <div
+              class="progress-bar progress-bar-striped bg-warning"
+              role="progressbar"
+              style="width: 0%"
+              aria-valuenow="75"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
           </div>
           <div class="progress">
-            <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 85%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+            <div
+              class="progress-bar progress-bar-striped bg-danger"
+              role="progressbar"
+              style="width: 85%"
+              aria-valuenow="100"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
           </div>
         </div>
       </div>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
