@@ -59,7 +59,7 @@ export default {
   },
   computed: {
     randomWord () {
-      return this.$store.state.words[1] 
+      return this.$store.state.words[1]
     }
   },
   data () {
@@ -82,6 +82,7 @@ export default {
         msg: this.msg,
         username: this.username
       })
+    }
   }
 }
 </script>
