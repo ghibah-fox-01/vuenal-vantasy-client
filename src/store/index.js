@@ -12,10 +12,17 @@ export default new Vuex.Store({
       score: 0,
       socketId: ''
     },
-    words: ['Architecture', 'Programming', 'Asyawaladu', 'Swaladubab', 'Cangcimen', 'Borokokok'],
+    words: [],
+    count: 0,
     question: ''
   },
   mutations: {
+    loadingWords (state, payload) {
+      state.words = payload
+    },
+    incrementCount (state) {
+      state.count++
+    },
     SOCKET_GET_DATA_USER (state, payload) {
       // getting data user -> when start game until finish game(list user score)
       state.listUser = payload
@@ -44,6 +51,12 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    loadingWords (context, payload) {
+      context.commit('loadingWords', payload)
+    },
+    incrementCount (context) {
+      context.commit('incrementCount')
+    },
     checkAnswer (context, data, question) {
       if (data !== question) {
         this.commit('SET_ANSWER')
@@ -67,7 +80,6 @@ export default new Vuex.Store({
     }
   },
   getters: {
-
   },
   modules: {
   }
