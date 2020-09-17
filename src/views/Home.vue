@@ -7,7 +7,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">@</span>
           </div>
-          <input v-model="msg" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+          <input v-model="username" type="text" class="form-control" placeholder="Username">
         </div>
       </div>
     </div>
@@ -17,7 +17,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">chat here</span>
           </div>
-          <input v-model="username" type="text" class="form-control" placeholder="text here" aria-label="Username" aria-describedby="basic-addon1">
+          <input v-model="msg" type="text" class="form-control" placeholder="text here">
         </div>
       </div>
     </div>
