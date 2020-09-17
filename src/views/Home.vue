@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div class="container">
     <div class="row">
       <div class="col-6 mx-auto">
@@ -8,28 +9,59 @@
             <span class="input-group-text" id="basic-addon1">@</span>
           </div>
           <input v-model="username" type="text" class="form-control" placeholder="Username">
+=======
+  <div class="home">
+    <NavBar/>
+    <div class="container">
+      <div id="game-center" class="border border-secondary p-5">
+      <h1>Welcome to, Vuenal Racer</h1>
+        <form id="form-input">
+        <h3>Type the given word in, 3s</h3>
+        <h1 id="random-generator" class="border border-secondary">"{{randomWord}}"</h1>
+        <div class="form-group">
+          <input type="text" class="form-control" id="input-word" placeholder="start typing...">
+>>>>>>> 1f9cf4e10709791e9106443530d3280d7ee8d54c
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-6 mx-auto">
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">chat here</span>
+        <h3>Time left: 32s</h3>
+        </form>
+        <h4>Progress Bars</h4>
+        <div class="progress-bar">
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 0%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 85%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+<<<<<<< HEAD
           <input v-model="msg" type="text" class="form-control" placeholder="text here">
+=======
+>>>>>>> 1f9cf4e10709791e9106443530d3280d7ee8d54c
         </div>
       </div>
-    </div>
-    <button class="btn btn-lg btn-success" @click="sendMessage">SEND</button>
   </div>
+</div>
 </template>
 
 <script>
 // @ is an alias to /src
+import NavBar from '../components/NavBar'
 
 export default {
   name: 'Home',
+  components: {
+    NavBar
+  },
+  computed: {
+    randomWord () {
+      return this.$store.state.words[1] 
+    }
+  },
   data () {
     return {
       msg: '',
@@ -50,7 +82,6 @@ export default {
         msg: this.msg,
         username: this.username
       })
-    }
   }
 }
 </script>

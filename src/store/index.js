@@ -12,7 +12,7 @@ export default new Vuex.Store({
       score: 0,
       socketId: ''
     },
-    listQuestion: [],
+    listQuestion: ['Architecture', 'Programming', 'Asyawaladu', 'Swaladubab', 'Cangcimen', 'Borokokok'],
     question: ''
   },
   mutations: {
