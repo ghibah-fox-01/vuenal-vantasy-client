@@ -5,10 +5,10 @@
     <div class="form-center">
       <form>
         <div class="form-group">
-          <label for="exampleInputEmail1">Guest Name</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <label for="exampleInputText1">Guest Name</label>
+          <input type="text" class="form-control" id="exampleInputText1" aria-describedby="textHelp" v-model="username">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button v-on:click.prevent="Login" class="btn btn-primary">Submit</button>
       </form>
       <div class="vuenal-logo">
         <h1>This is our logo</h1>
@@ -21,7 +21,17 @@
 
 <script>
 export default {
-  name: 'LoginPage'
+  name: 'LoginPage',
+  data () {
+    return {
+      username: ''
+    }
+  },
+  methods: {
+    Login () {
+      this.$socket.emit('newUser', { username: this.username })
+    }
+  }
 }
 </script>
 
