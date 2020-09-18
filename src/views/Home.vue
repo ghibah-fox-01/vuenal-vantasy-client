@@ -23,27 +23,9 @@
               :style="`width:${score}%`">
             </div>
           </div>
-          <div class="progress">
-            <div
-              class="progress-bar progress-bar-striped bg-info"
-              role="progressbar"
-              style="width: 50%"
-            ></div>
-          </div>
-          <div class="progress">
-            <div
-              class="progress-bar progress-bar-striped bg-warning"
-              role="progressbar"
-              style="width: 0%"
-            ></div>
-          </div>
-          <div class="progress">
-            <div
-              class="progress-bar progress-bar-striped bg-danger"
-              role="progressbar"
-              style="width: 85%"
-            ></div>
-          </div>
+          <ProgressBar v-for="user in listAllUser"
+          :key="user.id"
+          v-bind:user="user"></ProgressBar>
         </div>
       </div>
     </div>
@@ -53,15 +35,20 @@
 <script>
 // @ is an alias to /src
 import NavBar from '../components/NavBar'
+import ProgressBar from '../components/ProgressBar'
 
 export default {
   name: 'Home',
   components: {
-    NavBar
+    NavBar,
+    ProgressBar
   },
   computed: {
     randomWord () {
       return this.$store.state.words[this.$store.state.count]
+    },
+    listAllUser () {
+      return this.$store.state.listUser
     }
   },
   data () {
