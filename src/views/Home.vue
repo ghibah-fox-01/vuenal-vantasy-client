@@ -84,7 +84,7 @@ export default {
     },
     nextWord () {
       if (this.input === this.randomWord) {
-        this.$store.commit('incrementCount')
+        this.$store.dispatch('incrementCount')
         this.input = ''
         this.score += 10
         this.$socket.emit('getScore', this.score)

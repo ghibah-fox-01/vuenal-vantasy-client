@@ -16,6 +16,7 @@ export default new Vuex.Store({
     SOCKET_MUTATION_GET_DATA_USER (state, payload) {
       // getting data user -> when start game until finish game(list user score)
       state.listUser = payload
+      console.log('from state')
       console.log(state.listUser)
       console.log(payload)
     },
