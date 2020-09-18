@@ -65,7 +65,11 @@ export default {
         this.$store.dispatch('incrementCount')
         this.input = ''
         this.score += 10
-        this.$socket.emit('getScore', this.score)
+        if (this.score === 100) {
+          // this.socket.emit('endOfGame')
+        } else {
+          this.$socket.emit('getScore', this.score)
+        }
       } else {
         this.input = 'Wrong Word'
       }
