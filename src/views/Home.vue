@@ -73,6 +73,11 @@ export default {
       }
     }
   },
+  sockets: {
+    WINNER_USERNAME (payload) {
+      this.$router.push({ name: 'Winner' })
+    }
+  },
   created () {
     if (!localStorage.getItem('username')) {
       this.$router.push({ name: 'LoginPage' })
