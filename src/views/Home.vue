@@ -17,15 +17,9 @@
         </form>
         <h4>Progress Bars</h4>
         <div class="progress-bar">
-          <div class="progress">
-            <div class="progress-bar progress-bar-striped bg-success"
-              role="progressbar"
-              :style="`width:${score}%`">
-            </div>
-          </div>
-          <ProgressBar v-for="user in listAllUser"
+          <ProgressBar v-for="user in getPlayers"
           :key="user.id"
-          v-bind:user="user"></ProgressBar>
+          :user="user"></ProgressBar>
         </div>
       </div>
     </div>
@@ -47,7 +41,7 @@ export default {
     randomWord () {
       return this.$store.state.words[this.$store.state.count]
     },
-    listAllUser () {
+    getPlayers () {
       return this.$store.state.listUser
     }
   },
@@ -73,9 +67,12 @@ export default {
         this.$store.dispatch('incrementCount')
         this.input = ''
         this.score += 10
-        this.$socket.emit('getScore', this.score)
         this.wrongMark = false
         this.correctMark = true
+        this.$socket.emit('incrementScore', localStorage.getItem('username'))
+        if(this.score >= 100){
+          //win condition here
+        }
       } else {
         this.correctMark = false
         this.wrongMark = true

@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     login () {
-      this.$socket.emit('newUser', { username: this.username })
+      this.$socket.emit('newUser', this.username)
       localStorage.setItem('username', this.username)
       this.$router.push({ name: 'Home' })
     }
