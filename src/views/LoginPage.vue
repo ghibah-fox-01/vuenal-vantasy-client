@@ -1,22 +1,21 @@
 <template>
-  <div class="login-page m-3 p-3 border border-secondary">
-    <div class="login-box-top">
+<div class="container login-page">
+  <div class="flex-column">
+    <div class="col-sm flex-items-top">
+      <h1>Welcome to Vueracer!</h1>
+      <img src="../assets/img/vuenal-logo.png" alt="">
     </div>
-    <div class="form-center">
-      <form>
+    <div class="col-sm flex-items">
+      <form @submit.prevent="login">
         <div class="form-group">
-          <label for="exampleInputText1">Guest Name</label>
-          <input type="text" class="form-control" id="exampleInputText1" aria-describedby="textHelp" v-model="username">
+          <h3>Input your Nickname</h3>
+          <input style="text-align:center" v-model="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
-        <button v-on:click.prevent="Login" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </form>
-      <div class="vuenal-logo">
-        <h1>This is our logo</h1>
-      </div>
-    </div>
-    <div class="login-box-bottom">
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -28,8 +27,15 @@ export default {
     }
   },
   methods: {
-    Login () {
+    login () {
       this.$socket.emit('newUser', { username: this.username })
+      localStorage.setItem('username', this.username)
+      this.$router.push({ name: 'Home' })
+    }
+  },
+  created () {
+    if (localStorage.getItem('username')) {
+      this.$router.push({ name: 'Home' })
     }
   }
 }

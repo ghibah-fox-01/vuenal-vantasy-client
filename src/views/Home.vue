@@ -9,22 +9,25 @@
         <h1 id="random-generator" class="border border-secondary">"{{randomWord}}"</h1>
         <div class="form-group">
           <input v-model="input" type="text" class="form-control" id="input-word" placeholder="start typing...">
+          <div v-if="correctMark===true"><h3 style="color: green">Correct! </h3></div>
+          <div v-else-if="wrongMark===true"><h3 style="color: red">Wrong! </h3></div>
+          <div v-else><h3></h3></div>
         </div>
         <h3>Time left: 32s</h3>
         </form>
         <h4>Progress Bars</h4>
         <div class="progress-bar">
           <div class="progress">
-            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" :style="`width:${score}%`" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar progress-bar-striped bg-success"
+              role="progressbar"
+              :style="`width:${score}%`">
+            </div>
           </div>
           <div class="progress">
             <div
               class="progress-bar progress-bar-striped bg-info"
               role="progressbar"
               style="width: 50%"
-              aria-valuenow="50"
-              aria-valuemin="0"
-              aria-valuemax="100"
             ></div>
           </div>
           <div class="progress">
@@ -32,9 +35,6 @@
               class="progress-bar progress-bar-striped bg-warning"
               role="progressbar"
               style="width: 0%"
-              aria-valuenow="75"
-              aria-valuemin="0"
-              aria-valuemax="100"
             ></div>
           </div>
           <div class="progress">
@@ -42,9 +42,6 @@
               class="progress-bar progress-bar-striped bg-danger"
               role="progressbar"
               style="width: 85%"
-              aria-valuenow="100"
-              aria-valuemin="0"
-              aria-valuemax="100"
             ></div>
           </div>
         </div>
@@ -72,7 +69,9 @@ export default {
       msg: '',
       username: '',
       input: '',
-      score: 0
+      score: 0,
+      wrongMark: false,
+      correctMark: false
     }
   },
   methods: {
@@ -84,13 +83,21 @@ export default {
     },
     nextWord () {
       if (this.input === this.randomWord) {
-        this.$store.commit('incrementCount')
+        this.$store.dispatch('incrementCount')
         this.input = ''
         this.score += 10
         this.$socket.emit('getScore', this.score)
+        this.wrongMark = false
+        this.correctMark = true
       } else {
-        this.input = 'Wrong Word'
+        this.correctMark = false
+        this.wrongMark = true
       }
+    }
+  },
+  created () {
+    if (!localStorage.getItem('username')) {
+      this.$router.push({ name: 'LoginPage' })
     }
   }
 }
