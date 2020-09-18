@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    listUser: [],
+    listUser: {},
     words: [],
     count: 0
   },
@@ -15,7 +15,9 @@ export default new Vuex.Store({
     },
     SOCKET_MUTATION_GET_DATA_USER (state, payload) {
       // getting data user -> when start game until finish game(list user score)
-      state.listUser = payload
+      for (const user in payload) {
+        state.listUser[user] = payload[user]
+      }
       console.log(state.listUser)
       console.log(payload)
     },
