@@ -15,7 +15,6 @@
         <h4>Progress Bars</h4>
         <div class="progress-bar">
           <div class="progress">
-
             <div class="progress-bar progress-bar-striped bg-success" role="progressbar" :style="`width:${score}%`" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
           <div class="progress">
@@ -76,11 +75,6 @@ export default {
       score: 0
     }
   },
-  sockets: {
-    loadingWords (data) {
-      this.$store.commit('loadingWords', data)
-    }
-  },
   methods: {
     sendMessage () {
       this.$socket.emit('clientMessage', {
@@ -89,9 +83,14 @@ export default {
       })
     },
     nextWord () {
-      this.$store.commit('incrementCount')
-      this.input = ''
-      this.score += 10
+      if (this.input === this.randomWord) {
+        this.$store.commit('incrementCount')
+        this.input = ''
+        this.score += 10
+        this.$socket.emit('getScore', this.score)
+      } else {
+        this.input = 'Wrong Word'
+      }
     }
   }
 }
