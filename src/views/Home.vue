@@ -47,8 +47,6 @@ export default {
   },
   data () {
     return {
-      msg: '',
-      username: '',
       input: '',
       score: 0,
       wrongMark: false,
@@ -56,12 +54,6 @@ export default {
     }
   },
   methods: {
-    sendMessage () {
-      this.$socket.emit('clientMessage', {
-        msg: this.msg,
-        username: this.username
-      })
-    },
     nextWord () {
       if (this.input === this.randomWord) {
         this.$store.dispatch('incrementCount')
@@ -70,8 +62,10 @@ export default {
         this.wrongMark = false
         this.correctMark = true
         this.$socket.emit('incrementScore', localStorage.getItem('username'))
-        if(this.score >= 100){
-          //win condition here
+        if (this.score >= 100) {
+          // win condition here
+          this.$socket.emit('foundWinner', localStorage.getItem('username'))
+          this.$router.push({ name: 'Winner' })
         }
       } else {
         this.correctMark = false

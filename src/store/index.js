@@ -7,7 +7,8 @@ export default new Vuex.Store({
   state: {
     listUser: {},
     words: [],
-    count: 0
+    count: 0,
+    winnerUsername: 'TEST'
   },
   mutations: {
     INCREMENT_COUNT (state) {
@@ -18,6 +19,10 @@ export default new Vuex.Store({
     },
     SOCKET_MUTATION_GET_LIST_QUESTION (state, payload) {
       state.words = payload
+    },
+    SOCKET_MUTATION_WINNER_USERNAME (state, payload) {
+      console.log(payload)
+      state.winnerUsername = payload
     }
   },
   actions: {
