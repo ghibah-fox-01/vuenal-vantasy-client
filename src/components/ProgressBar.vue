@@ -8,7 +8,7 @@
       aria-valuemin="0"
       aria-valuemax="100"
     >
-      <div class="mt-2 text-dark">{{user.name}}</div>
+      <div class="mt-2 text-dark">{{user.username}}</div>
     </div>
   </div>
 </template>
