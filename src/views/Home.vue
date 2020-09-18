@@ -17,36 +17,9 @@
           <div class="progress">
             <div class="progress-bar progress-bar-striped bg-success" role="progressbar" :style="`width:${score}%`" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
-          <div class="progress">
-            <div
-              class="progress-bar progress-bar-striped bg-info"
-              role="progressbar"
-              style="width: 50%"
-              aria-valuenow="50"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            ></div>
-          </div>
-          <div class="progress">
-            <div
-              class="progress-bar progress-bar-striped bg-warning"
-              role="progressbar"
-              style="width: 0%"
-              aria-valuenow="75"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            ></div>
-          </div>
-          <div class="progress">
-            <div
-              class="progress-bar progress-bar-striped bg-danger"
-              role="progressbar"
-              style="width: 85%"
-              aria-valuenow="100"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            ></div>
-          </div>
+          <ProgressBar v-for="user in listAllUser"
+          :key="user.id"
+          v-bind:user="user"></ProgressBar>
         </div>
       </div>
     </div>
@@ -56,15 +29,20 @@
 <script>
 // @ is an alias to /src
 import NavBar from '../components/NavBar'
+import ProgressBar from '../components/ProgressBar'
 
 export default {
   name: 'Home',
   components: {
-    NavBar
+    NavBar,
+    ProgressBar
   },
   computed: {
     randomWord () {
       return this.$store.state.words[this.$store.state.count]
+    },
+    listAllUser () {
+      return this.$store.state.listUser
     }
   },
   data () {
@@ -87,7 +65,11 @@ export default {
         this.$store.dispatch('incrementCount')
         this.input = ''
         this.score += 10
-        this.$socket.emit('getScore', this.score)
+        if (this.score === 100) {
+          // this.socket.emit('endOfGame')
+        } else {
+          this.$socket.emit('getScore', this.score)
+        }
       } else {
         this.input = 'Wrong Word'
       }
