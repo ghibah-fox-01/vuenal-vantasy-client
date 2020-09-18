@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import LoginPage from '../views/LoginPage.vue'
 import Winner from '../views/Winner.vue'
+import NavBar from '../components/NavBar.vue'
 
 Vue.use(VueRouter)
 
@@ -20,7 +21,14 @@ const routes = [
   {
     path: '/winner',
     name: 'Winner',
-    component: Winner
+    component: Winner,
+    children: [
+      {
+        path: 'test',
+        name: 'Login',
+        component: NavBar
+      }
+    ]
   }
 ]
 
